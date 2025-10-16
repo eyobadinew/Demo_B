@@ -8,6 +8,8 @@
             <class name="Tests.ContactPageTest"/>
             <class name="Tests.IndexPageTest"/>
             <class name="Tests.AboutUsPageTest"/>
+            <class name="Tests.SignupPageTest"/>
+            <class name="Tests.LoginPageTest"/>
 
 
 

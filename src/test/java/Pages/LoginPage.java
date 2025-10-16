@@ -1,6 +1,7 @@
 package Pages;
 
 import Utils.ElementUtil;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,6 +26,20 @@ public class LoginPage {
     @FindBy(xpath="//h5[@id='logInModalLabel']")
     private WebElement loginPageHeader;
 
+    @FindBy(css="#loginusername")
+    private WebElement userNameField;
+    @FindBy(css="#loginpassword")
+    private WebElement passwordField;
+    @FindBy(css="button[onclick='logIn()']")
+    private WebElement loginButton;
+
+
+
+    @FindBy(css="#nameofuser")
+    private WebElement loginSuccessLink;
+
+
+
     @FindBy(xpath="//div[@id='logInModal']//button[@type='button'][normalize-space()='Close']")
     private WebElement closeLoginPageButton;
 
@@ -37,4 +52,41 @@ public class LoginPage {
     public void hitCloseLoginPageButton(){
         elementUtil.doClick(closeLoginPageButton);
     }
+
+
+public void doLoginWithDefaultUser(){
+        wait.until(ExpectedConditions.visibilityOfAllElements(loginPageHeader));
+        elementUtil.javaScriptExecutorDoSendKeys(userNameField,"jobjobjob");
+    elementUtil.javaScriptExecutorDoSendKeys(passwordField,"@1234567890");
+    elementUtil.javaScriptExecutorDoClick(loginButton);
 }
+    public void doLoginWithOutUserNameAndPassword(){
+        wait.until(ExpectedConditions.visibilityOfAllElements(loginPageHeader));
+        elementUtil.javaScriptExecutorDoSendKeys(userNameField,"");
+        elementUtil.javaScriptExecutorDoSendKeys(passwordField,"");
+        elementUtil.javaScriptExecutorDoClick(loginButton);
+    }
+
+    public void doLoginWithInvalidUserNameAndPassword(){
+        wait.until(ExpectedConditions.visibilityOfAllElements(loginPageHeader));
+        elementUtil.javaScriptExecutorDoSendKeys(userNameField,"rtrwesceefdrdfd");
+        elementUtil.javaScriptExecutorDoSendKeys(passwordField,"pojdhgdtegd");
+        elementUtil.javaScriptExecutorDoClick(loginButton);
+    }
+    public WebElement getLoginSuccessLink() {
+        wait.until(ExpectedConditions.visibilityOfAllElements(loginSuccessLink));
+        return loginSuccessLink;
+    }
+
+    public String loginAlertText(){
+        wait.until(ExpectedConditions.alertIsPresent());
+       return elementUtil.getAlertText();
+    }
+    public void acceptLoginAlertText(){
+        wait.until(ExpectedConditions.alertIsPresent());
+        elementUtil.acceptAlert();
+    }
+
+}
+
+
