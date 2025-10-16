@@ -56,6 +56,7 @@ public class IndexPage {
         elementUtil.doClick(cartLink);
     }
     public void hitLoginLink(){
+
         elementUtil.doClick(loginLink);
     }
     public void hitSignupLink(){
