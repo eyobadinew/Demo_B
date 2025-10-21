@@ -42,6 +42,8 @@ public class IndexPage {
    private WebElement samsungPhonePageHeader;
 
 
+   @FindBy(xpath="//a[normalize-space()='Add to cart']")
+   private WebElement addToCartButton;
 
 
 
@@ -87,6 +89,17 @@ public class IndexPage {
         elementUtil.doBrowserNavigateBack();
     }
 
+public void hitAddToCartButton(){
+        wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOfAllElements(addToCartButton)));
+        elementUtil.doClick(addToCartButton);
+}
 
-
+public String getAlertText(){
+        wait.until(ExpectedConditions.alertIsPresent());
+      return  elementUtil.getAlertText();
+}
+public void acceptAlertText(){
+    wait.until(ExpectedConditions.alertIsPresent());
+        elementUtil.acceptAlert();
+}
 }

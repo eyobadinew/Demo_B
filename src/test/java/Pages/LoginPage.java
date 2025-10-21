@@ -38,7 +38,8 @@ public class LoginPage {
     @FindBy(css="#nameofuser")
     private WebElement loginSuccessLink;
 
-
+   @FindBy(xpath="//a[3]")
+   private WebElement laptopsLink;
 
     @FindBy(xpath="//div[@id='logInModal']//button[@type='button'][normalize-space()='Close']")
     private WebElement closeLoginPageButton;
@@ -85,6 +86,11 @@ public void doLoginWithDefaultUser(){
     public void acceptLoginAlertText(){
         wait.until(ExpectedConditions.alertIsPresent());
         elementUtil.acceptAlert();
+    }
+
+    public void hitLaptopsLink(){
+        wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOfAllElements(laptopsLink)));;
+        elementUtil.javaScriptExecutorDoClick(laptopsLink);
     }
 
 }

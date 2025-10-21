@@ -10,6 +10,9 @@
             <class name="Tests.AboutUsPageTest"/>
             <class name="Tests.SignupPageTest"/>
             <class name="Tests.LoginPageTest"/>
+            <class name="Tests.CartPageTest"/>
+            <class name="Tests.EndToEndTest"/>
+
 
 
 
