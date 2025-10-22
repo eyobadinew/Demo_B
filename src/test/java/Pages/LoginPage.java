@@ -44,6 +44,9 @@ public class LoginPage {
     @FindBy(xpath="//div[@id='logInModal']//button[@type='button'][normalize-space()='Close']")
     private WebElement closeLoginPageButton;
 
+    @FindBy(xpath="//a[@id='logout2']")
+    private WebElement logoutLink;
+
     public String loginPageHeaderText(){
         wait.until(ExpectedConditions.visibilityOfAllElements(loginPageHeader));
         return elementUtil.doGetText(loginPageHeader);
@@ -91,6 +94,10 @@ public void doLoginWithDefaultUser(){
     public void hitLaptopsLink(){
         wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOfAllElements(laptopsLink)));;
         elementUtil.javaScriptExecutorDoClick(laptopsLink);
+    }
+
+    public void doLogout(){
+        elementUtil.javaScriptExecutorDoClick(logoutLink);
     }
 
 }

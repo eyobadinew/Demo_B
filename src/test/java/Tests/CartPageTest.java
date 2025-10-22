@@ -10,18 +10,16 @@ import static org.testng.Assert.*;
 public class CartPageTest extends BaseTest {
     IndexPage indexPage;
     CartPage cartPage;
-    @Test
+    @Test(priority=1)
     public void validateCartPage(){
         indexPage = new IndexPage(driver,wait);
         indexPage.hitCartLink();
         cartPage = new CartPage(driver,wait);
         assertEquals(cartPage.cartPageHeaderText(),"Products");
         driver.navigate().back();
-
-
     }
 
-    @Test
+    @Test(priority = 2)
     public void validatePurchase(){
         indexPage = new IndexPage(driver,wait);
         indexPage.hitCartLink();
@@ -39,8 +37,6 @@ public class CartPageTest extends BaseTest {
         assertTrue(cartPage.getPurchasedItemInfo().contains("036815243252"));
         cartPage.hitSuccessfulPurchaseOkButton();
         cartPage.hitCloseButton();
-
-
     }
 
 
